@@ -1,17 +1,13 @@
-server:
-  port: 3344
 spring:
+  profiles:
+    active: dev
+---
+spring:
+  profiles: dev
   application:
-    name: springcloud-config-server
-# 连接远程配置
-  cloud:
-    config:
-      server:
-        git:
-          uri: https://life-0.github.io/springcloud-config/ #连接远程仓库
-#Eureka配置
-eureka:
-  client:
-    register-with-eureka: false # 不向eureka注册自己
-    service-url:
-      defaultZone: http://localhost:8761/eureka/,http://127.0.0.1:8762/eureka/
+    name: springcloud-config-dev
+---
+spring:
+  profiles: test
+  application:
+    name: springcloud-config-test
